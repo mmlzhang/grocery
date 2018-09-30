@@ -1,0 +1,43 @@
+	{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		All_category
+	{% endblock %}
+	{% block body_block %}
+
+		<div class="row marketing">
+        <div>
+            <h4>共有{{ num }}种分类</h4>
+             <ul class="list-group">
+                 {% for category in pages %}
+                    <li class="list-group-item" style="border: none">
+                        <a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}- - -</a>
+                        <span class="badge badge-pill badge-primary">{{category.likes}}
+                        </span></li>
+                 {% endfor %}
+             </ul>
+        </ul>
+            <ul id="PageNum" style="clear: both;">
+                <li style="position: relative; float: left; list-style: none; margin: 10px;">
+                    <a href="{% url 'rango:all_categories' %}">首页</a></li>
+                {% if pages.has_previous %}
+                    <li style="position: relative; float: left; list-style: none; margin: 10px;">
+                        <a href="{% url 'rango:all_categories' %}?page_num={{ pages.previous_page_number }}">
+                            上一页</a></li>
+                {% endif %}
+                {% for i in pages.paginator.page_range %}
+                    <li style="position: relative; float: left; list-style: none; margin: 10px;">
+                        <a href="{% url 'rango:all_categories' %}?page_num={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                {% if pages.has_next %}
+                    <li style="position: relative; float: left; list-style: none; margin: 10px;">
+                        <a href="{% url 'rango:all_categories' %}?page_num={{ pages.next_page_number }}">下一页</a></li>
+                {% endif %}
+                <li style="position: relative; float: left; list-style: none; margin: 10px;">
+                    当前{{ pages.number }}页</li>
+                <li style="position: relative; float: left; list-style: none; margin: 10px;">
+                    <a href="{% url 'rango:all_categories' %}?page_num={{ pages.paginator.num_pages }}">尾页</a></li>
+</ul>
+        </div>
+		</div>
+	{% endblock %}

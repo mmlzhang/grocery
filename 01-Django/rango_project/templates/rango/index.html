@@ -1,0 +1,43 @@
+	{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		Index
+	{% endblock %}
+	
+	{% block body_block %}
+			
+		<div class="row marketing">
+        {% if categories %}
+			<div class="col-lg-6">
+
+                <h4>分类</h4>
+                <p>
+		             <ul class="list-group">
+		                 {% for category in categories %}
+		                 	<li class="list-group-item">
+                                <a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
+                                <span class="badge badge-pill badge-primary">{{category.likes}}
+                                </span></li>
+		                 {% endfor %}
+		             </ul>
+                </p>
+			</div>
+        {% endif %}
+        {% if pages %}
+			<div class="col-lg-6">
+                    <h4>网页</h4>
+				<p>
+				<ul class="list-group">
+				{% for page in pages %}
+				 <li class="list-group-item"><a href="{% url 'rango:goto' %}?page_id={{ page.id }}" target="_blank" \>{{ page.title }}</a>
+                     <span class="badge badge-pill badge-primary">{{page.views}}</span></li>
+				 {% endfor %}
+				 </ul>
+                </p>
+            </div>
+        {% endif %}
+		</div>
+{#		<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />#}
+	{% endblock %}
+
+

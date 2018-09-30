@@ -1,0 +1,21 @@
+	{% extends "rango/base.html" %}
+	{% block title_block %}
+		Login
+	{% endblock %}
+	{% block body_block %}
+	<link href="http://v4-alpha.getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+	<div  style="margin: 10px 20px; top: 0;">
+		<h1 class="display-3" style="font-size: 30px">Login</h1>
+ 	</div>
+	<form class="form-signin" role="form" method="post" action="." style="top: 0px;">
+		{% csrf_token %}
+		<h2 class="form-signin-heading">欢迎登录</h2>
+		<label for="inputUsername" class="sr-only">用户名</label>
+		<input type="text" id="id_username" class="form-control" name="username" placeholder="用户名" required autofocus>
+		<label for="inputPassword" class="sr-only">密码</label>
+		<input type="password" id="id_password" class="form-control" name="password" placeholder="密码" required>
+		<button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />登 录</button>
+{#		<input type="hidden" name="next" value="{{ next }}" />#}
+	</form>
+	<p>前往<a href="{% url 'user:register' %}">注册</a>!</p>
+	{% endblock %}

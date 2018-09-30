@@ -1,0 +1,383 @@
+/*--
+Author: 小贝壳网站模板
+Author URL: http://www.smallseashell.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+
+/* reset */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+/* start editing from here */
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+/*end reset*/
+
+body{
+padding:0;
+margin:0;
+background: url(../images/old_map.png) repeat;
+font-family: 'Lato', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin:0;			   
+}	
+p{
+	margin:0;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+label{
+	margin:0;
+}
+/*-- main --*/
+.main{
+	padding:110px 0;
+}
+.main h1{
+	font-family: 'Audiowide', cursive;
+    font-size: 34px;
+    text-align: center;
+    color: #ac92ec;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+.content{
+	margin:0 auto;
+	width:27%;
+	padding:25px;
+	background:#fff;
+}
+
+input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner { border : none; } 
+input[type="submit"]:focus, input[type="button"]:focus { outline : none; }
+
+.clear { clear: both; }
+
+#container {
+    position: relative;
+}
+    #container #first_step, #second_step, #third_step, #fourth_step { display: none; }
+    #container #first_step { display: block; }    
+    #container h1, #container h2 {
+
+        text-align: center;
+        font-size: 24px;
+        text-shadow: 1px 1px 2px #222;
+    }
+        #container h1 span { color: #a90329; }
+        
+    #container h2 {
+        color: #888;
+        font-size: 20px;
+        text-align: left;
+        text-shadow: none;
+    }
+    
+#container table {
+    margin: 30px 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+#container table td {
+    padding: 7px 20px;
+}
+            #container table td:nth-child(2) {
+                color:#BFBBBB;
+            }   
+        
+    #container input {
+    color: #ccc;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 95%;
+	padding: 10px;    
+    margin: 0 0 28px 0;
+    }
+	#container input.submit{
+    width: 100%;
+    padding: 16px 0;
+    font-weight: 500;
+    font-size: 18px;
+	margin: 0;
+    background: #ac92ec;
+    border: none;
+    cursor: pointer;
+	color:#fff;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+    }
+	#container input.submit:hover {
+	background: #000;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+	}
+    #container input.submit:focus { border: none; }     
+    #container input.error { border: 1px solid red; }
+    #container input.valid { border: 1px solid #1FFF00; }    
+    #container input:focus, #container select:focus {
+        border: 1px solid #a90329;
+        color: #888;
+    }
+	#container input.submit:focus{
+		color: #fff;
+	}
+#container select {   
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 28px;
+    background: url(../images/arrow.png) no-repeat 96% center #ffffff;
+    -webkit-appearance: none;
+    font-size: 14px;
+    color: #ccc;
+}
+    #container option { padding: 0 15px; }
+    #container label {
+        color: #666;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 14px;
+        float: right;
+        margin: 23px -25px;
+        width: 270px;
+    }
+p.footer {
+    text-align: center;
+    margin-top: 45px;
+    color: #000;
+    font-size: 15px;
+}
+p.footer a{
+    color:#ac92ec;	
+}
+p.footer a:hover{
+    color: #000;	
+}
+.content h5 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #AC92EC;
+}
+/*-- responsive media queries --*/
+
+@media (max-width: 1440px){
+	#container input {
+		width: 94%;
+	}	
+}
+@media (max-width: 1366px){
+	.main {
+		padding: 100px 0;
+	}	
+}
+@media (max-width: 1280px){
+	.main {
+		padding: 76px 0;
+	}	
+	.main h1 {
+		font-size: 31px;
+	}
+	#container input {
+		width: 93%;
+	}
+}
+@media (max-width: 1080px){
+	.content {
+		width: 31%;
+	}	
+}
+@media (max-width: 1024px){
+	
+}
+@media (max-width: 991px){
+	.content {
+		width: 37%;
+	}	
+}
+@media (max-width: 800px){
+	.content {
+		width: 42%;
+	}
+	.main h1 {
+		font-size: 28px;
+	}	
+}
+@media (max-width: 768px){
+	.main {
+		padding: 150px 0;
+	}
+	.main h1 {
+		margin-bottom: 95px;
+	}
+	p.footer {
+		margin-top: 68px;
+	}	
+}
+@media (max-width: 736px){
+	.main {
+		padding: 80px 0;
+	}
+	.main h1 {
+		margin-bottom: 50px;
+	}
+	p.footer {
+		margin-top: 48px;
+	}	
+}
+@media (max-width: 667px){
+	.content {
+		width: 47%;
+	}	
+}
+@media (max-width: 640px){
+	.content {
+		width: 54%;
+	}	
+}
+@media (max-width: 600px){
+	
+}
+@media (max-width: 568px){
+	.main {
+		padding: 75px 0;
+	}
+	.main h1 {
+		font-size: 26px;
+	}
+	.content {
+		width: 56%;
+	}	
+}
+@media (max-width: 480px){
+	p.footer {
+		font-size: 13px;
+	}
+	.main h1 {
+		font-size: 25px;
+	}
+	.content {
+		width: 66%;
+	}
+	#container input.submit {
+		padding: 13px 0;
+		font-size: 17px;
+	}
+	#container input ,#container select{
+		padding: 8px 10px;
+	}
+	.content h5 {
+		font-size: 14px;
+	}
+	#container h2 {
+		font-size: 17px;
+	}	
+}
+@media (max-width: 414px){
+	p.footer {
+		line-height: 1.8em;
+	}
+	.main h1 {
+		font-size: 22px;
+	}
+	.content {
+		width: 73%;
+	}	
+}
+@media (max-width: 384px){
+	p.footer {
+		margin: 48px auto 0 auto;
+		width: 90%;
+	}
+	.main h1 {
+		font-size: 21px;
+		margin-bottom: 35px;
+	}
+	.main {
+		padding: 60px 0;
+	}
+	.content h5 {
+		margin-bottom: 8px;
+	}	
+	#container input.submit {
+		padding: 11px 0;
+		font-size: 16px;
+	}
+	p.footer {
+		margin: 35px auto 0 auto;
+	}
+	#container input {
+		margin: 0 0 19px 0;
+	}
+}
+@media (max-width: 375px){
+	#container input {
+		width: 92%;
+	}
+	#container input {
+		margin: 0 0 24px 0;
+	}	
+}
+@media (max-width: 320px){
+	.main h1 {
+		font-size: 18px;	
+	}
+	.main {
+		padding: 45px 0;
+	}
+	.content {
+		width: 80%;
+		padding: 15px;
+	}
+	#container input {
+		width: 91%;
+	}
+	#container input.submit {
+		font-size: 14px;
+	}
+	p.footer {
+		width: 96%;
+	}
+	#container input {
+		font-size: 13px;
+	}
+	p.footer {
+		margin: 28px auto 0 auto;
+	}
+	#container select {
+		padding: 7px 10px;
+	}
+	#container table {
+		margin: 20px 0px;
+	}
+	#container table td {
+		padding: 6px 16px;
+	}
+	#container table {
+		font-size: 13px;
+	}
+}

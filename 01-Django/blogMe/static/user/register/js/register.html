@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>注册</title>
+<!-- for-mobile-apps -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="keywords" content="Validation Signup Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<!-- //for-mobile-apps -->
+<link href="/static/user/register/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- fonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- //fonts -->
+<script type="text/javascript" src="/static/user/register/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/user/register/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/user/register/js/jquery.inputfocus-0.9.min.js"></script>
+<script type="text/javascript" src="/static/user/register/js/jquery.main.js"></script>
+</head>
+<body>
+	<div class="main">
+		<h1>注册</h1>
+		<div class="content">
+			<div id="container">
+				<form action="." method="post">
+                    {% csrf_token %}
+					<!-- #first_step -->
+					<div id="first_step">
+
+						<div class="form">
+							<h5>用户名</h5>
+							<input type="text" name="username" id="username"
+                                   value="" />
+							<h5>密码:</h5>
+							<input type="password" name="password" id="password"
+                                   value="" />
+							<h5>确认密码</h5>
+							<input type="password" name="re_password" id="cpassword"
+                                   value="" />
+						</div>
+						<input class="submit" type="submit" name="submit_first"
+                               id="submit_first" value="下一步" />
+					</div>  
+					<!-- #second_step -->
+					<div id="second_step">
+						<div class="form">
+							<h5>姓</h5>
+							<input type="text" name="first name" id="firstname"
+                                   value="" />
+							<h5>名</h5>
+							<input type="text" name="last name" id="lastname"
+                                   value="" />
+							<h5>邮箱</h5>
+							<input type="text" name="email address" id="email"
+                                   value="" />
+						</div>
+						<input class="submit" type="submit" name="submit_second"
+                               id="submit_second" value="下一步" />
+					</div>
+					<!-- #third_step -->
+					<div id="third_step">
+						<div class="form">
+							<h5>年龄</h5>
+							<select id="age" name="age">
+								<option> 0 - 14</option>
+								<option>15 - 30</option>
+								<option>30 - 40</option>
+								<option>40+</option>
+							</select>
+							<h5>性别</h5>
+							<select id="gender" name="gender">
+								<option>男</option>
+								<option>女</option>
+							</select>
+							<h5>国家</h5>
+							<select id="country" name="country">
+								<option>中国</option>
+								<option>美国</option>
+							</select>
+
+						</div>      <div class="clear"></div>
+						<input class="submit" type="submit" name="submit_third" id="submit_third" value="下一步" />
+
+					</div>
+            <div class="clear"></div>
+					
+					
+					<!-- #fourth_step -->
+					<div id="fourth_step">
+						<div class="form">
+							<h2>确定</h2>
+							<table>
+								<tr><td>用户名:</td>
+                                    <td></td></tr>
+								<tr><td>密码:</td>
+                                    <td></td></tr>
+								<tr><td>邮箱:</td>
+                                    <td></td></tr>
+								<tr><td>姓:</td>
+                                    <td></td></tr>
+								<tr><td>名:</td>
+                                    <td></td></tr>
+								<tr><td>性别</td>
+                                    <td></td></tr>
+								<tr><td>国家:</td>
+                                    <td></td></tr>
+							</table>
+						</div>      <!-- clearfix --><div class="clear"></div><!-- /clearfix -->
+						<input class="send submit" type="submit"
+                               name="submit_fourth" id="submit_fourth" value="提交" />
+					</div>
+					
+				</form>
+			</div>
+		</div>
+		<p class="footer">© 2018 Validation Signup Form. All Rights Reserved | Design by <a href="http://www.blogzml.top/" target="_blank">blogzml.com</a></p>
+	</div>		
+</body>
+</html>

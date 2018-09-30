@@ -1,0 +1,37 @@
+{% extends "rango/base.html" %}
+{% block body_block %}
+<h2 class="form-signin-heading">管理角色和权限!</h2>
+    <table style="margin: 20px 50px;">
+        <tr>
+            <th width="150px" bgcolor="#ffd700">角色</th>
+            <th width="150px" bgcolor="red" style="color: white">权限</th>
+            <th width="150px" bgcolor="#7fffd4">操作</th>
+        </tr>
+{% for role in roles %}
+    {% for permission in role.perms_of_role.all %}
+        <div>
+    <tr>
+        <td bgcolor="#ffffe0">{{ role.name }}</td>
+        <td bgcolor="#f0ffff">{{ permission.p_hans }}</td>
+        <td><input type ="checkbox" id='checkbox1' onclick = 'check(this)' name="check" value="1"/>有
+  <input name="check" value="" type ="checkbox" id='checkbox2' onclick = 'check(this)'/>无</td>
+    </tr>
+        </div>
+    {% endfor %}
+{% endfor %}
+    </table>
+    <script>
+     function check(obj){
+      if(obj.id == 'checkbox1' && obj.checked == true){
+           document.getElementById('checkbox2').checked = false;
+           $.ajax({
+               url: '',
+               // 执行后台添加权限的操作
+           })
+          }
+      else if(obj.id == 'checkbox2' && obj.checked == true){
+           document.getElementById('checkbox1').checked = false;
+          }
+ }
+    </script>
+{% endblock %}

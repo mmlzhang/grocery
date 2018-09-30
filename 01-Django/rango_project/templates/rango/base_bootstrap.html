@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+{% load rango_template_tags %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+      <title>Rango - {% block title %}{% endblock %}</title>
+      <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://v4-alpha.getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="">Rango</a>
+
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'rango:index' %}">主页</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'rango:about' %}">关于</a>
+          </li>
+        {% if user.ticket %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'rango:add_category' %}">增加新分类</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'rango:all_categories' %}">所有分类</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'rango:all_pages' %}">All</a>
+            </li>
+            <li class="nav-item" style="position: relative; left: 380px">
+              <a class="nav-link" href="{% url 'rango:post_profile' %}">个人中心</a>
+            </li>
+            <li class="nav-item" style="position: relative; left: 400px;">
+              <a style="color: red;" class="nav-link" href="{% url 'user:logout' %}">退出</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+              <a style="color: red;" class="nav-link" href="{% url 'user:login' %}">登录</a>
+            </li>
+            <li class="nav-item">
+              <a style="color: red;" class="nav-link" href="{% url 'user:register' %}">注册</a>
+            </li>
+
+        {% endif %}
+        {% ifequal user.role.name_en 'ADMIN' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'user:all_users' %}">后台管理</a>
+            </li>
+                {% endifequal %}
+        </ul>
+      </div>
+    </nav>
+          {% if user.username %}
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-pills flex-column">
+		        <li class="nav-item">查找分类</li>
+	            <form>
+			        <li class="nav-item"><input class="search-query form-control" type="text"
+				        name="suggestion" value="" id="suggestion" />
+			        </li>
+		        </form>
+	        </ul>
+            <hr />
+        </div>
+            {% endif %}
+	<div id="cats">
+	</div>
+        </div>
+        <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+        <div class="jumbotron" style="height: 100px;">
+    {% if user.username %}
+		<h1 class="display-3" style="font-size: 40px;">Welcome {{ user.username }}...</h1>
+        {% else %}
+        		<h4 class="display-3" style="font-size: 30px;">登录可查看更多</h4>
+
+        {% endif %}
+ 	</div>
+
+{% block body_block %}
+{% endblock %}
+
+        </div>
+      </div>
+    </div>
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="http://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="http://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="{% static "js/rango-ajax.js" %}"></script>
+    <script src="{% static "js/rango-jquery.js" %}"></script>
+  </body>
+</html>
+
+

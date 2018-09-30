@@ -1,0 +1,13 @@
+{% extends 'base_main.html' %}
+{% block title %}
+首页
+{% endblock %}
+{% block content %}
+   <h1>django_app</h1>
+    <hr>
+    <h2><a href="{% url 'app:index' %}">day01-Django项目-app</a></h2>
+    <h2><a href="{% url 'user:login' %}">登录</a></h2>
+    <h2><a href="{% url 'user:register' %}">注册</a></h2>
+    <h2><a href="{% url 'user:logout' %}">注销</a></h2>
+
+{% endblock %}

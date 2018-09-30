@@ -1,0 +1,24 @@
+	{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		Add Category
+	{% endblock %}
+	
+	{% block body_block %}
+		<div>
+			<h1>增加新分类</h1>
+			<form role="form" id="category_form" method="post" action="">
+				{% csrf_token %}
+				{% for hidden in form.hidden_fields %}
+	                {{ hidden }}
+	            {% endfor %}
+
+	            {% for field in form.visible_fields %}
+	                {{ field.errors }}
+	                {{ field.help_text }}
+	                {{ field }}
+	            {% endfor %}
+				<button class="btn btn-primary" type="submit" name="submit">增加</button>
+	        </form>
+		</div>
+	{% endblock %}

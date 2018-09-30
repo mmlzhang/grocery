@@ -1,0 +1,77 @@
+	{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		{{ category.name }}
+	{% endblock %}
+	
+	{% block body_block %}
+	<div>
+	{% if category %}
+	
+	<h1>{{ category.name }}</h1>
+        <div>
+	<strong id="like_count">{{ category.likes }}</strong>-人喜欢此分类!
+	{% if user %}
+		<button id="likes" data-catid="{{category.id}}" class="btn btn-primary btn-sm" type="button">
+			Like
+		</button>
+	{% endif %}
+	</div>
+
+		<div id="pages">
+		{% if pages %}
+		<ul>
+			{% for page in pages %}
+			<li><a href="{% url 'rango:goto' %}?page_id={{ page.id }}"\>{{ page.title }}
+            </a><span class="tag tag-pill tag-primary">{{page.views}}</span></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+			<strong>暂时没有页面!</strong>
+		{% endif %}
+
+		
+	{% else %}
+		不存在此分类!
+	{% endif %}
+		</div>
+<!-- {% if user %} {% endif %} -->
+		<a href="{% url 'rango:add_page' category.slug %}?">增加</a>
+	</div>
+
+	<hr>
+
+	<div>
+		<form class="form-inline" id="user_form"
+				method="post" action="{% url 'rango:show_category'  category.slug %}">
+			{% csrf_token %}
+			<div class="form-group">
+				<input class="form-control" type="text" size="50"
+					name="query" value="{{ query }}" id="query" />
+			</div>
+			<button class="btn btn-primary" type="submit" name="submit"
+				 value="Search">查找</button>
+			</form>
+			<div>
+			{% if result_list %}
+			<h3>Results</h3>
+			<!-- Display search results in an ordered list -->
+				<div class="list-group">
+				{% for result in result_list %}
+					<div class="list-group-item">
+					<h4 class="list-group-item-heading">
+					<a href="{{ result.link }}">{{ result.title }}</a>
+					</h4>
+					<p class="list-group-item-text">{{ result.summary }}</p>
+						{% if user.is_authenticated %}
+						<button data-catid="{{category.id}}" data-title="{{ result.title }}"
+					 data-url="{{ result.link }}"
+						class="rango-add btn btn-info btn-sm" type="button">增加</button>
+					{% endif %}
+					</div>
+				{% endfor %}
+				</div>
+			{% endif %}
+			</div>
+	</div>
+	{% endblock %}

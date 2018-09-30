@@ -1,0 +1,133 @@
+{% extends 'base_main.html' %}
+{% load static %}
+{% block extCSS %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'app/market/market.css' %}">
+
+{% endblock %}
+
+{% block EXTJS %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'app/market/js/market.js' %}"></script>
+    <script type="text/javascript" src="{% static 'common/functions.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="market">
+
+        <aside>
+            <ul>
+                <!--闪购分类展示-->
+                {% for foodtype in foodtypes %}
+                    <li>
+                        <!--链接地址，点击获取分类下的商品信息-->
+                        <a href="{% url 'axf:market_param' foodtype.typeid '0' '0' %}">
+                            {{ foodtype.typename }}</a>
+                        {% ifequal foodtype.typeid typeid %}
+                            <span class="yellowSlide"></span>
+                    {% endifequal %}
+                    </li>
+                {% endfor %}
+                <!--处理数据结束-->
+            </ul>
+
+        </aside>
+
+        <section>
+            <nav>
+                <ul>
+                    <li id="all_types"><span>
+                        全部类型<span id="all_type_logo"
+                                  class="glyphicon glyphicon-chevron-down"></span></span>
+                    </li>
+                    <li id="sort_rule"><span>
+                        综合排序<span id="sort_rule_logo"
+                                  class="glyphicon glyphicon-chevron-down"></span></span>
+                    </li>
+                </ul>
+            </nav>
+
+            <menu>
+                <ul>
+                    <!--商品信息展示-->
+                {% csrf_token %}
+                    {% for gds in goods %}
+                        <li>
+                            <a href="#">
+                                <img src="{{ gds.productimg }}" alt="">
+                                <div class="shoppingInfo">
+                                    <h6></h6>
+                                    <p class="detailTag">
+                                        <span>精选</span>
+                                        <span>{{ gds.productname }}</span>
+                                    </p>
+                                    <!--{{ gds.productlongname }}-->
+                                    <p class="unit">
+
+                                    </p>
+                                    <p class="price">
+                                        <span>¥{{ gds.price }}</span>
+                                        <s>¥{{ gds.marketprice }}</s>
+                                    </p>
+                                </div>
+                            </a>
+                        <section>
+                        <button goodsid="" onclick="sub_cart({{ gds.id }})" >-</button>
+
+                        <span id="num_{{ gds.id }}">
+                            {% if gds.cartmodel_set.all and user.id %}  <!--判断商品是否在购物车-->
+                                <!--拿取所有的商品,  会有多个用户持有该商品-->
+                                {% for cart_goods in gds.cartmodel_set.all %}
+                                    <!-- 一个商品可能在多个人的购物车中, 判断在当前用户的购物车中, 拿取该用户商品数量-->
+                                    {% ifequal cart_goods.user.id user.id %}
+                                        {{ cart_goods.c_num }}
+                                    {% endifequal %}
+                                {% endfor %}
+                            {% else %}
+                            0
+                            {% endif %}
+                        </span>
+                            <button goodsid="" onclick="add_cart({{ gds.id }})" >+</button>
+                        </section>
+
+                            </li>
+                    {% endfor %}
+                    <!--处理数据结束-->
+                </ul>
+
+                <div id="all_types_container">
+                    <div>
+                        <!--加载全部分类的数据-->
+                        {% for child in child_list %}
+                            <!--typeid 是传进来的 typeid  child - ['全部分类':'0']-->
+                            <a href="{% url 'axf:market_param' typeid child.1 '0' %}">
+                                <span>{{ child.0 }}</span>
+                            </a>
+                        {% endfor %}
+                        <!--处理数据结束-->
+                    </div>
+                </div>
+
+                <div id="sort_container">
+                    <div>
+{#      排序传递的也是状态码   0 , 1 ,2  , 3 ,4 ,5...                    #}
+                        <a href="{% url 'axf:market_param' typeid cid '0' %}">
+                            <span>综合排序</span>
+                        </a>
+                        <a href="{% url 'axf:market_param' typeid cid '1' %}">
+                            <span>销量排序</span>
+                        </a>
+                        <a href="{% url 'axf:market_param' typeid cid '2' %}">
+                            <span>价格降序</span>
+                        </a>
+                        <a href="{% url 'axf:market_param' typeid cid '3' %}">
+                            <span>价格升序</span>
+                        </a>
+                    </div>
+                </div>
+            </menu>
+        </section>
+    </div>
+{% endblock %}

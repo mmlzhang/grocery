@@ -1,0 +1,103 @@
+{% extends 'base_main.html' %}
+{% block title %}
+{% endblock %}
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="generator" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+{% block extCSS %}
+    <link href="/static/css/haiersoft.css" rel="stylesheet" type="text/css" media="screen,print" />
+    <link href="/static/css/print.css" rel="stylesheet" type="text/css"  media="print" />
+{% endblock %}
+
+{% block extJS %}
+        {{ block.super }}
+        <script src="/static/js/side.js" type="text/javascript"></script>
+        <script type="text/javascript">
+    $(function(){
+    $(".select").each(function(){
+    var s=$(this);
+    var z=parseInt(s.css("z-index"));
+    var dt=$(this).children("dt");
+    var dd=$(this).children("dd");
+    var _show=function(){dd.slideDown(200);dt.addClass("cur");s.css("z-index",z+1);};
+    var _hide=function(){dd.slideUp(200);dt.removeClass("cur");s.css("z-index",z);};
+    dt.click(function(){dd.is(":hidden")?_show():_hide();});
+    dd.find("a").click(function(){dt.html($(this).html());_hide();});
+    $("body").click(function(i){ !$(i.target).parents(".select").first().is(s) ? _hide():"";});})})
+
+    </script>
+<script>
+    // 点击提交, 进行API数据修改
+    $(document).ready(function () {
+        var path = location.href;
+        var grade_id = path.split('=')[1];
+       // 显示班级名
+        $.get('/app/api/grade/' + grade_id + '/', function (msg) {
+            $('#grade_name').val(msg.data.g_name)
+        })
+    });
+function editGrade () {
+     var path = location.href;
+        var grade_id = path.split('=')[1];
+        var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+        $.ajax({
+            url:'/app/api/grade/' + grade_id + '/',
+            type: 'PATCH',
+            dataType: 'json',
+            data: {
+                'g_name': $('#grade_name').val(),
+            },
+            headers: {'X-CSRFToken': csrf},
+            success: function (msg) {
+                alert('ok');
+                location.href = 'app/grade/'
+            },
+            error: function (msg) {
+                alert('失败')
+            },
+        });
+
+};
+
+
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="Popup">
+
+<!-- SubPopup -->
+<div id="SubPopup">
+
+{#    <form action="" method="post">#}
+
+    {% csrf_token %}
+<div class="form_boxC">
+<table cellpadding="0" cellspacing="0">
+<tr>
+<th width="100">班级名称</th>
+<td>
+<div class="selectbox" style="width:230px;">
+    <input type="hidden" name="g_id" value="{{ g_id }}">
+<input type="text" id="grade_name" name="grade_name" placeholder="请填入班级名称">
+</div>
+</td>
+</tr>
+
+</table>
+<div id="BtmBtn">
+<div class="btn_box floatR">
+	<input name="" type="" value="提交" id="submit" onclick="editGrade()">
+</div>
+</div>
+</div>
+{#</form>#}
+</div>
+
+</div>
+{% endblock %}
+

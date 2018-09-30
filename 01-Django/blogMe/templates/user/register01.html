@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>注册</title>
+<!-- Custom Theme files -->
+<link href="/static/user/login/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<!-- Custom Theme files -->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+<body>
+<!--header start here-->
+<div class="login-form">
+			<div class="top-login">
+				<span><img src="/static/user/login/images/group.png" alt=""/></span>
+			</div>
+			<h1>注册</h1>
+			<div class="login-top">
+			<form action="." method="post">
+                {% csrf_token %}
+				<div class="login-ic">
+					<i ></i>
+					<input type="text"  value="用户名" name="username"
+                           onFocus="this.value = '';"
+                           onBlur="if (this.value == '')
+                           {this.value = '用户名不能为空';}"/>
+					<div class="clear"> </div>
+				</div>
+				<div class="login-ic">
+					<i class="icon"></i>
+					<input type="password" name="password"
+                           value="密码" onFocus="this.value = '';
+                    " onBlur="if (this.value == '')
+                    {this.value = '密码不能为空';}"/>
+					<div class="clear"> </div>
+				</div>
+
+                <div class="login-ic">
+					<i class="icon"></i>
+					<input type="password" name="re_password"
+                           value="密码" onFocus="this.value = '';
+                    " onBlur="if (this.value == '')
+                    {this.value = '密码不能为空';}"/>
+					<div class="clear"> </div>
+				</div>
+			
+				<div class="log-bwn">
+					<input type="submit"  value="提交" >
+				</div>
+				</form>
+			</div>
+			<p class="copy">© 2018 blogzml.com</p>
+</div>		
+<!--header start here-->
+</body>
+</html>

@@ -1,0 +1,57 @@
+	{% extends 'rango/base.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+		All_pages
+	{% endblock %}
+	{% block body_block %}
+	<div class="jumbotron">
+		<h1 class="display-3">Welcome Admin...</h1>
+{#		{% if user.is_authenticated %}#}
+{#			<p class="lead">hey there {{ user.username }}</p>#}
+{#		{% else %}#}
+{#			<p class="lead">hey there partner! </p>#}
+{#		{% endif %}#}
+ 	</div>
+		<div class="row marketing">
+        {% if pages %}
+			<div>
+            <h4>用户列表</h4>
+
+            <div>共有{{ num }}个用户</div>
+                <div><h4><a href="{% url 'user:role_permission' %}">权限管理</a></h4></div>
+
+            <table cellpadding="0" cellspacing="0" id="tb_grade">
+<tr><th  style="border: none; width: 100px;">编号</th>
+    <th  style="border: none; width: 100px;">用户名</th>
+    <th  style="border: none; width: 100px;">角色</th>
+    <th  style="border: none; width: 100px;">是否被删除</th>
+    <th  style="border: none; width: 100px;">操作</th></tr>
+
+				{% for user in pages %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td >{{ user.username }}</td>
+                    <td >{{ user.role.name }}</td>
+                    <td >{{ user.delete }}</td>
+                    <td ><a href="{% url 'user:edit_user' %}?user_id={{ user.id }}">编辑</a></td>
+                </tr>
+                    {% endfor %}
+            </table>
+            <ul id="PageNum" style="clear: both;">
+                <li style="position: relative; float: left; list-style: none; margin: 10px;"><a href="{% url 'user:all_users' %}">首页</a></li>
+                {% if pages.has_previous %}
+                    <li style="position: relative; float: left; list-style: none; margin: 10px;"><a href="{% url 'user:all_users' %}?page_num={{ pages.previous_page_number }}">上一页</a></li>
+                {% endif %}
+                {% for i in pages.paginator.page_range %}
+                    <li style="position: relative; float: left; list-style: none; margin: 10px;"><a href="{% url 'user:all_users' %}?page_num={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                {% if pages.has_next %}
+                    <li style="position: relative; float: left; list-style: none; margin: 10px;"><a href="{% url 'user:all_users' %}?page_num={{ pages.next_page_number }}">下一页</a></li>
+                {% endif %}
+                <li style="position: relative; float: left; list-style: none; margin: 10px;">当前{{ pages.number }}页</li>
+                <li style="position: relative; float: left; list-style: none; margin: 10px;"><a href="{% url 'user:all_users' %}?page_num={{ pages.paginator.num_pages }}">尾页</a></li>
+</ul>
+            </div>
+        {% endif %}
+		</div>
+	{% endblock %}

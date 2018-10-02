@@ -1,0 +1,36 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block etxCSS %}
+    {{ super() }}
+<link rel="stylesheet" type="text/css" href="/static/css/public.css" />
+
+{% endblock %}
+
+{% block etxJS %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+	<!-- 头部 -->
+	<div class="head">
+		<div class="headl" >
+			<img class="headLogo" src="/static/img/logLOGO.png"/>
+		</div>
+		<div class="headR">
+			{% if user %}
+			<span style="color:#FFF">欢迎：{{ user.username }}</span>
+			<a href="/bs/logout/" rel="external" style="color: green; font-size: 18px;" target="_parent">
+				【退出】</a>
+			{% else %}
+			<a href="/bs/login/" rel="external" style="color: white; font-size: 18px;" target="_parent">
+				【登录】</a>
+			<a href="/bs/register/" rel="external" style="color: green; font-size: 18px;" target="_parent">
+				【注册】</a>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

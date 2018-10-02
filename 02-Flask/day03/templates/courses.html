@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    课程页面
+{% endblock%}
+
+{% block etxCSS%}
+    {{ super() }}
+{% endblock %}
+
+{% block etxJS%}
+{{ super() }}
+<script>
+    $(function () {
+        $('tbody tr:even').addClass('warning');
+        $('tbody tr:odd').addClass('info')
+    })
+</script>
+{% endblock %}
+
+{% block content %}
+                    <h3 style="color: red">课程列表</h3>
+
+{% if stu %}
+    <h1>学生: <span style="color: green">{{ stu.s_name }}</span> </h1>
+{% endif %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+                <thead>
+                    <tr>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>查看</th>
+
+                        {% if stu %}
+                        <th>删除</th>
+                        {% endif %}
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in courses %}
+                    <tr>
+                        <td>{{ c.c_id}}</td>
+                        <td>{{ c.c_name }}</td>
+                        <td><a href="/user/stu_in_course/?c_id={{ c.c_id }}">选课学生</a></td>
+                        {% if stu %}
+                        <td><a href="/user/stu/{{ stu.s_id }}/del_course/{{ c.c_id }}/">删除</a></td>
+
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

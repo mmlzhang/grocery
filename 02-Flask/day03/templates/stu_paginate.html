@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    分页
+{% endblock %}
+
+{% block etxCSS %}
+    {{ super() }}
+{% endblock %}
+
+{% block etxJS%}
+{{ super() }}
+<script>
+    $(function () {
+        $('tbody tr:even').addClass('warning');
+        $('tbody tr:odd').addClass('info')
+    })
+</script>
+{% endblock %}
+
+
+{% block content%}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stu in stus %}
+        <tr>
+            <td>{{ stu.s_id}}</td>
+            <td>{{ stu.s_name }}</td>
+            <td>{{ stu.s_age }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<h4>总页数: {{ paginate.pages }}</h4>
+<h4>当前页: {{ paginate.page}}</h4>
+<h4>显示的条数:{{ paginate.per_page }}</h4>
+
+    {% if paginate.has_prev %}
+        <a href="/user/paginate/?page={{ paginate.prev_num }}">上一页</a>
+    {% endif %}
+
+    {% for i in paginate.iter_pages() %}
+    <span style="font-size: 20px;"><a href="/user/paginate/?page={{ i }}">{{ i }}</a></span>
+    {% endfor %}
+
+    {% if paginate.has_next %}
+       <a href="/user/paginate/?page={{ paginate.next_num }}">下一页</a>
+    {% endif %}
+
+
+{% endblock %}

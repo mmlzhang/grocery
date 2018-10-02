@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生</title>
+</head>
+<body>
+
+    <h4>{{ stus }}</h4>
+    <hr>
+
+{% for stu in stus%}
+    name: {{ stu.s_name }}<br>
+    age: {{ stu.s_age }}<br>
+{% endfor %}
+
+    <hr>
+{{ stu_all}}
+
+
+</body>
+</html>

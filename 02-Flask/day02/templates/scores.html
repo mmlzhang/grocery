@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+    分数
+{% endblock %}
+
+{% block css%}
+{# <link rel="stylesheet" href="{{ url_for('static', filename='css/scores.css') }}"> #}
+<link rel="stylesheet" href="/static/css/scores.css">
+{% endblock %}
+
+{% block content%}
+    {{ scores }}
+<hr>
+<ul>
+    {% for score in scores %}
+        <!--loop.first  第一个是 True  last  最后一个为True-->
+        {% if loop.first %}
+        <li style="color: red;">{{ score }}</li>
+        {% elif loop.last %}
+        <li style="color: green;">{{ score }}</li>
+        {% else %}
+    <!-- loop.index  loop.revindex -->
+        <li>{{ score }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<hr>
+{{ content_h2 }}
+{{ content_h2|safe }}  <!--过滤器 显示标签-->
+{{ content_h2|striptags }} <!--去除标签样式, 保留文本-->
+
+<hr>
+{{ content_h3 }}
+{{ content_h3|safe }}
+{{ content_h3|length }}
+<br>
+{{ content_h3|trim }}
+<br>
+{{ content_h3|trim|length }}
+
+{% endblock %}
+
+{% block footer %}
+
+{% from 'common.html' import show %}
+<br>
+{{ show('1', 'abc') }}<br>
+{{ show('2', '1231') }}<br>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    班级页面
+{% endblock%}
+
+{% block etxCSS%}
+    {{ super() }}
+{% endblock %}
+
+{% block etxJS%}
+{{ super() }}
+<script>
+    $(function () {
+        $('tbody tr:even').addClass('info');
+        $('tbody tr:odd').addClass('warning')
+    })
+</script>
+{% endblock %}
+
+
+{% block content %}
+                    <h3 style="color: red">班级列表</h3>
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>班级名称</th>
+                        <th>描述</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for grade in grades %}
+                    <tr>
+                        <td>{{ grade.g_id }}</td>
+                        <td>{{ grade.g_name }}</td>
+                        <td>{{ grade.g_desc }}</td>
+                        <td>{{ grade.g_create_time }}</td>
+                        <td>
+                            <a href="/user/create_stu_by_grade/?g_id={{ grade.g_id }}">添加学生</a>|
+                            <a href="/user/select_stu_by_grade/?g_id={{ grade.g_id }}">查看学生</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

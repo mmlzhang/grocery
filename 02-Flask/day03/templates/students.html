@@ -1,0 +1,67 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    学生页面
+{% endblock%}
+
+{% block etxCSS%}
+    {{ super() }}
+{% endblock %}
+
+{% block etxJS%}
+{{ super() }}
+<script>
+    $(function () {
+        $('tbody tr:even').addClass('warning');
+        $('tbody tr:odd').addClass('info')
+    })
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+
+            {% if g.g_name %}
+
+                <h2>当前班级: <span style="color: green;">{{ g.g_name }}
+                    {% else %}
+                    <h3 style="color: red">学生列表</h3>
+                    {% endif %}
+</span></h2>
+			<table class="table">
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>班级</th>
+                        <th>添加课程</th>
+                        <th>查看课程</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stu in stu_all %}
+                    <tr>
+                        <td>{{ stu.s_id}}</td>
+                        <td>{{ stu.s_name }}</td>
+                        <td>{{ stu.s_age }}</td>
+                        <td>{{ stu.grades }}</td>
+                        <td><a href="/user/add_course/?s_id={{ stu.s_id }}">
+                            添加课程</a></td>
+                        <td><a href="/user/show_course/{{ stu.s_id }}/">
+                            查看课程</a></td>
+                        <td><a href="/user/update_stu/?id={{ stu.s_id}}">编辑</a>  |
+                            <a href="">删除</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

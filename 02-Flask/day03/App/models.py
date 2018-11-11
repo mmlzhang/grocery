@@ -6,6 +6,17 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
+class CeleryTest(db.Model):
+
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    v1 = db.Column(db.String(20))
+    v2 = db.Column(db.String(20))
+    v3 = db.Column(db.String(20))
+    count = db.Column(db.Integer)
+
+    __tablename__ = 'tb_celery_test'
+
+
 class Student(db.Model):
     """
      many 的一方, 建立外键

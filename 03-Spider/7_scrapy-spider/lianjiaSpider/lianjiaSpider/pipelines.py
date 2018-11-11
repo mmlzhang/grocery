@@ -40,6 +40,8 @@ class LianjiaMongo(object):
         except:
             pass
         return item
+
+
 class Lianjiaredis(object):
 
     def __init__(self):

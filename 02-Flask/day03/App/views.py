@@ -1,14 +1,32 @@
 import datetime
+from datetime import datetime as dd
 import random
 
 from flask import Blueprint, render_template, request, \
     redirect, url_for, session, flash
 
-from App.models import db, Student, Grade, Course, User
+from App.models import db, Student, Grade, Course, User, CeleryTest
 from utils.decorator import is_login
 
 user_blueprint = Blueprint('user', __name__)
 
+
+@user_blueprint.route('/celery/')
+def celery():
+    args = request.args
+    v1 = args.get("v1")
+    v2 = args.get("v2")
+    # v3 = args.get("v3")
+    celery = CeleryTest()
+    celery.v1 = v1
+    celery.v2 = v2
+    celery.v3 = dd.strftime(dd.now(), "%Y-%m-%d %H:%M:%S")
+    celery.count = 1
+
+    db.session.add(celery)
+    db.session.commit()
+
+    return "ok"
 
 @user_blueprint.route('/')
 def index():

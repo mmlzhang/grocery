@@ -32,7 +32,7 @@ def create_app():
 
     # 配置数据库
     app.config['SQLALCHEMY_DATABASE_URI'] = \
-        'mysql+pymysql://root:123456@localhost:3306/test'
+        'mysql+pymysql://lanms:123456@localhost:3306/test'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     app.debug = True

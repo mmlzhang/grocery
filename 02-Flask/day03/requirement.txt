@@ -1,0 +1,8 @@
+flask_script
+flask_sqlalchemy
+flask_session
+flask_login
+flask_restful
+flask_debugtoolbar
+pymysql
+redis

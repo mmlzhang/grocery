@@ -105,7 +105,7 @@
 
 from scrapy.contrib.downloadermiddleware.useragent import UserAgentMiddleware
 
-from utils.user_agent import random_agent
+from ..utils.user_agent import random_agent
 
 
 class RandomUserAgent(UserAgentMiddleware):

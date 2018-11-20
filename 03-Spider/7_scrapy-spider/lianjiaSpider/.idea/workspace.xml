@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17f4498a-3b5b-423f-9280-34bd0651c51b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/lianjiaSpider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lianjiaSpider.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/middlewares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/pipelines.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/pipelines.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/spiders/chenjiao.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/spiders/chenjiao.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/spiders/ershoufang.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/spiders/ershoufang.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/spiders/loupan.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/spiders/loupan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lianjiaSpider/spiders/zufang.py" beforeDir="false" afterPath="$PROJECT_DIR$/lianjiaSpider/spiders/zufang.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scrapy.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/scrapy.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
-    </list>
+    <list default="true" id="17f4498a-3b5b-423f-9280-34bd0651c51b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +45,7 @@
     <session id="-229128040">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>

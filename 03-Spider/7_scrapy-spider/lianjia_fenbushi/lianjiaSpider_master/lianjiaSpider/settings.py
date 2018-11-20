@@ -30,17 +30,17 @@ ROBOTSTXT_OBEY = False
 # 下载延迟 时间
 # DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
-#TELNETCONSOLE_ENABLED = False
+# TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
+# DEFAULT_REQUEST_HEADERS = {
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
 #}
@@ -72,24 +72,24 @@ ITEM_PIPELINES = {
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
+# AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
+# AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-#AUTOTHROTTLE_MAX_DELAY = 60
+# AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
-#AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
+# AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
-#AUTOTHROTTLE_DEBUG = False
+# AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
-#HTTPCACHE_EXPIRATION_SECS = 0
-#HTTPCACHE_DIR = 'httpcache'
-#HTTPCACHE_IGNORE_HTTP_CODES = []
-#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+# HTTPCACHE_ENABLED = True
+# HTTPCACHE_EXPIRATION_SECS = 0
+# HTTPCACHE_DIR = 'httpcache'
+# HTTPCACHE_IGNORE_HTTP_CODES = []
+# HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # 爬取的最大页数
 MAX_PAGE = 101
@@ -104,30 +104,28 @@ MAX_PAGE = 101
 REDIS_HOST = '127.0.0.1'
 REDIS_PORT = 6379
 
-# # scrapy-redis
-# REDIS_URL = 'redis://:yzd@127.0.0.1:6379'  # for master
-# # REDIS_URL = 'redis://:yzd@10.140.0.2:6379'  # for slave (master's ip)
-#
-# # SCHEDULER 是任务分发与调度，把所有的爬虫开始的请求都放在redis里面，
-# # 所有爬虫都去redis里面读取请求。
+# scrapy-redis
+REDIS_URL = 'redis://:yzd@127.0.0.1:6379'  # for master
+# REDIS_URL = 'redis://:yzd@10.140.0.2:6379'  # for slave (master's ip)
+
+# SCHEDULER 是任务分发与调度，把所有的爬虫开始的请求都放在redis里面，
+# 所有爬虫都去redis里面读取请求。
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 #
-# # 如果这一项设为True，那么在Redis中的URL队列不会被清理掉，
-# # 但是在分布式爬虫共享URL时，要防止重复爬取。如果设为False，
-# # 那么每一次读取URL后都会将其删掉，但弊端是爬虫暂停后重新启动，他会重新开始爬取。
+# 如果这一项设为True，那么在Redis中的URL队列不会被清理掉，
+# 但是在分布式爬虫共享URL时，要防止重复爬取。如果设为False，
+# 那么每一次读取URL后都会将其删掉，但弊端是爬虫暂停后重新启动，他会重新开始爬取。
 SCHEDULER_PERSIST = True
-#
-# # REDIS_START_URLS_AS_SET指的是使用redis里面的set类型（简单完成去重），
-# # 如果你没有设置，默认会选用list。
-# REDIS_START_URLS_AS_SET = True
-#
-# # DUPEFILTER_CLASS 是去重队列，负责所有请求的去重
+
+# REDIS_START_URLS_AS_SET指的是使用redis里面的set类型（简单完成去重），
+# 如果你没有设置，默认会选用list。
+REDIS_START_URLS_AS_SET = True
+
+# DUPEFILTER_CLASS 是去重队列，负责所有请求的去重
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
-#
-# # 爬虫的请求调度算法，有三种可供选择
-# # scrapy_redis.queue.SpiderQueue：队列。先入先出队列，先放入Redis的请求优先爬取；
-# # scrapy_redis.queue.SpiderStack：栈。后放入Redis的请求会优先爬取；
-# # scrapy_redis.queue.SpiderPriorityQueue：优先级队列。根据优先级算法计算哪个先爬哪个后爬
+
+# 爬虫的请求调度算法，有三种可供选择
+# scrapy_redis.queue.SpiderQueue：队列。先入先出队列，先放入Redis的请求优先爬取；
+# scrapy_redis.queue.SpiderStack：栈。后放入Redis的请求会优先爬取；
+# scrapy_redis.queue.SpiderPriorityQueue：优先级队列。根据优先级算法计算哪个先爬哪个后爬
 SCHEDULER_QUEUE_CLASS = "scrapy_redis.queue.SpiderQueue"
-
-

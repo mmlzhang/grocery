@@ -2,7 +2,7 @@
 import scrapy
 
 from scrapy_redis.spiders import RedisSpider
-from lianjiaSpider.items import LianjiaHouseItem
+from ..items import LianjiaHouseItem
 
 
 class LianJiaSpider(RedisSpider):

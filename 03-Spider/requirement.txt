@@ -25,7 +25,7 @@ idna==2.7
 idna-ssl==1.1.0
 incremental==17.5.0
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 jsmin==2.2.2
 kaitaistruct==0.8
 ldap3==2.5.1

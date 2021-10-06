@@ -54,7 +54,7 @@ queuelib==1.5.0
 redis==2.10.6
 requests==2.19.1
 ruamel.yaml==0.15.47
-Scrapy==1.5.1
+Scrapy==1.8.1
 scrapy-redis==0.6.8
 scrapyd==1.2.0
 selenium==3.13.0
